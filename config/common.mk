@@ -106,21 +106,31 @@ TARGET_SCREEN_HEIGHT ?= 1920
 PRODUCT_PACKAGES += \
     bootanimation.zip
 
+
+ifneq ($(TARGET_EXCLUDE_LINEAGE_PACKAGES),true)
 # Lineage packages
 PRODUCT_PACKAGES += \
     LineageParts \
-    LineageSettingsProvider \
+    Updater \
     LineageSetupWizard \
-    Updater
+
+endif
+
+# Mandatory Lineage packages
+PRODUCT_PACKAGES += \
+    LineageSettingsProvider \
 
 # Themes
 PRODUCT_PACKAGES += \
     LineageThemesStub \
     ThemePicker
 
+ifneq ($(TARGET_EXCLUDE_LINEAGE_PACKAGES),true)
 # Config
 PRODUCT_PACKAGES += \
     SimpleDeviceConfig
+
+endif
 
 # Extra tools in Lineage
 PRODUCT_PACKAGES += \
